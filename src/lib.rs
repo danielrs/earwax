@@ -8,7 +8,7 @@ pub mod ffi;
 pub mod timestamp;
 
 use error::{Error, Result};
-use timestamp::Timestamp;
+pub use timestamp::Timestamp;
 
 use num::rational::Rational64;
 
