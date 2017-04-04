@@ -2,5 +2,23 @@
 name = "earwax"
 version = "0.1.0"
 authors = ["Daniel Rivas <ers.daniel+dev@gmail.com>"]
+build = "build.rs"
+
+description = "Audio decoding library for Rust based on ffmpeg"
+
+homepage = "https://github.com/danielrs/earwax"
+documentation = "https://github.com/danielrs/earwax"
+repository = "https://github.com/danielrs/earwax"
+
+license = "MIT"
+license-file = "./LICENSE"
 
 [dependencies]
+libc = "0.2"
+num = "0.1"
+
+[dev-dependencies]
+ao_rs = "0.1.0"
+
+[build-dependencies]
+gcc = "0.3"
