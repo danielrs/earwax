@@ -1,6 +1,10 @@
 Audio decoding library based on ffmpeg 2.8. The purpose of this library is
 to provide a safe and simple way of converting any audio input to raw PCM data.
 
+## Dependencies
+
+From ffmpeg 2.8, the required libraries are `libavcodec`, `libavformat`, and `libavdevice`.
+
 ## Usage
 
 ```rust
