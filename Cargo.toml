@@ -1,13 +1,13 @@
 [package]
 name = "earwax"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Daniel Rivas <ers.daniel+dev@gmail.com>"]
 build = "build.rs"
 
 description = "Audio decoding library for Rust based on ffmpeg"
 
 homepage = "https://github.com/danielrs/earwax"
-documentation = "https://github.com/danielrs/earwax"
+documentation = "https://docs.rs/earwax"
 repository = "https://github.com/danielrs/earwax"
 
 license = "MIT"
