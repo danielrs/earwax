@@ -1,3 +1,9 @@
+[crates.io]: https://crates.io/crates/earwax
+[docs.rs]: https://docs.rs/earwax
+
+[![crates.io](https://img.shields.io/crates/v/earwax.svg)][crates.io]
+[![docs.rs](https://docs.rs/earwax/badge.svg)][docs.rs]
+
 Audio decoding library based on ffmpeg 2.8. The purpose of this library is
 to provide a safe and simple way of converting any audio input to raw PCM data.
 
@@ -20,6 +26,8 @@ fn main() {
     }
 }
 ```
+
+Check the [documentation][docs.rs] for a detailed reference.
 
 ## TODO
 
