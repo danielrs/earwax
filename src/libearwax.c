@@ -202,7 +202,8 @@ int earwax_new(EarwaxContext** ctx_ptr, const char* url) {
     // Codec context.
     ctx->stream_index = -1;
     ctx->codec_ctx = avcodec_alloc_context3(NULL);
-    for (int i = 0; i < ctx->format_ctx->nb_streams; ++i) {
+    int i;
+    for (i = 0; i < ctx->format_ctx->nb_streams; ++i) {
         AVCodecContext* codec_ctx = ctx->format_ctx->streams[i]->codec;
         if (codec_ctx->codec_type == AVMEDIA_TYPE_AUDIO) {
             avcodec_copy_context(ctx->codec_ctx, codec_ctx);
