@@ -38,10 +38,7 @@ pub struct EarwaxRational {
 
 impl EarwaxRational {
     pub fn new() -> Self {
-        EarwaxRational {
-            num: 1,
-            den: 1,
-        }
+        EarwaxRational { num: 1, den: 1 }
     }
 }
 
@@ -89,7 +86,7 @@ impl EarwaxChunk {
 #[link(name="swresample")]
 #[link(name="avutil")]
 #[link(name="pthread")]
-extern {
+extern "C" {
     pub fn earwax_init();
     pub fn earwax_shutdown();
     pub fn earwax_new(ctx: *mut *mut EarwaxContext, url: *const c_char) -> c_int;

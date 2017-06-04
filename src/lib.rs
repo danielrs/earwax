@@ -42,17 +42,16 @@ impl Earwax {
                 let time_base = Rational64::new(info.time_base.num, info.time_base.den);
 
                 Ok(Earwax {
-                    earwax_context: Unique::new(earwax_context),
-                    info: Info {
-                        bitrate: info.bitrate,
-                        sample_rate: info.sample_rate,
-                        start_time: Timestamp::from_pts(time_base, info.start_time),
-                        duration: Timestamp::from_pts(time_base, info.duration),
-                        time_base: time_base,
-                    }
-                })
-            }
-            else {
+                       earwax_context: Unique::new(earwax_context),
+                       info: Info {
+                           bitrate: info.bitrate,
+                           sample_rate: info.sample_rate,
+                           start_time: Timestamp::from_pts(time_base, info.start_time),
+                           duration: Timestamp::from_pts(time_base, info.duration),
+                           time_base: time_base,
+                       },
+                   })
+            } else {
                 Err(Error::FFI(res.into()))
             }
         }
@@ -71,11 +70,10 @@ impl Earwax {
             if ffi::earwax_spit(*self.earwax_context, &mut chunk) > 0 {
                 let slice = std::slice::from_raw_parts(chunk.data, chunk.size);
                 Some(Chunk {
-                    data: slice,
-                    time: Timestamp::from_pts(self.info().time_base, chunk.time),
-                })
-            }
-            else {
+                         data: slice,
+                         time: Timestamp::from_pts(self.info().time_base, chunk.time),
+                     })
+            } else {
                 None
             }
         }
@@ -122,4 +120,3 @@ pub struct Info {
     pub duration: Timestamp,
     pub time_base: Rational64,
 }
-
