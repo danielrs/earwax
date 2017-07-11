@@ -67,7 +67,7 @@ impl Earwax {
     pub fn spit(&mut self) -> Option<Chunk> {
         unsafe {
             let mut chunk = ffi::EarwaxChunk::new();
-            if ffi::earwax_spit(*self.earwax_context, &mut chunk) > 0 {
+            if ffi::earwax_spit(self.earwax_context.as_mut(), &mut chunk) > 0 {
                 let slice = std::slice::from_raw_parts(chunk.data, chunk.size);
                 Some(Chunk {
                          data: slice,
@@ -88,7 +88,7 @@ impl Earwax {
     /// Seeks to the given pts.
     pub fn seek_pts(&mut self, pts: i64) {
         unsafe {
-            ffi::earwax_seek(*self.earwax_context, pts);
+            ffi::earwax_seek(self.earwax_context.as_mut(), pts);
         }
     }
 }
@@ -96,7 +96,7 @@ impl Earwax {
 impl Drop for Earwax {
     fn drop(&mut self) {
         unsafe {
-            let mut ctx = self.earwax_context.as_mut().unwrap() as *mut ffi::EarwaxContext;
+            let mut ctx = self.earwax_context.as_mut() as *mut ffi::EarwaxContext;
             ffi::earwax_drop(&mut ctx);
             ffi::earwax_shutdown();
         }
