@@ -5,9 +5,11 @@ extern crate num;
 
 pub mod error;
 pub mod ffi;
+pub mod log;
 pub mod timestamp;
 
 use error::{Error, Result};
+pub use log::LogLevel;
 pub use timestamp::Timestamp;
 
 use num::rational::Rational64;
@@ -90,6 +92,16 @@ impl Earwax {
         unsafe {
             ffi::earwax_seek(self.earwax_context.as_mut(), pts);
         }
+    }
+
+    pub fn log_level() -> LogLevel {
+        unsafe { LogLevel::from_int(ffi::av_log_get_level()) }
+    }
+
+    /// Sets the log level for all earwax objects. Internally,
+    /// this sets the log level of ffmpeg.
+    pub fn set_log_level(level: LogLevel) {
+        unsafe { ffi::av_log_set_level(level.to_int()) }
     }
 }
 

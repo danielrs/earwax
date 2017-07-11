@@ -356,6 +356,10 @@ int earwax_seek(EarwaxContext* ctx, int64_t pts) {
     return av_seek_frame(ctx->format_ctx, ctx->stream_index, pts, AVSEEK_FLAG_BACKWARD);
 }
 
+void earwax_log_level(int level) {
+    av_log_set_level(level);
+}
+
 // --------
 // Private API Definition
 // --------

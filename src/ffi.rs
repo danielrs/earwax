@@ -94,4 +94,8 @@ extern "C" {
     pub fn earwax_get_info(ctx: *const EarwaxContext, info: *mut EarwaxInfo);
     pub fn earwax_spit(ctx: *mut EarwaxContext, chunk: *mut EarwaxChunk) -> c_int;
     pub fn earwax_seek(ctx: *mut EarwaxContext, pts: int64_t) -> c_int;
+
+    // Other ffmpeg functions.
+    pub fn av_log_get_level() -> c_int;
+    pub fn av_log_set_level(level: c_int);
 }
