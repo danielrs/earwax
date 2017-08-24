@@ -43,8 +43,14 @@ impl Earwax {
                 ffi::earwax_get_info(earwax_context, &mut info);
                 let time_base = Rational64::new(info.time_base.num, info.time_base.den);
 
+                let context = match Unique::new(earwax_context) {
+                    Some(ctx) => ctx,
+                    None =>
+                        return Err(Error::FFI(ffi::EarwaxErrorCode::UnableToOpenDecoder))
+                };
+
                 Ok(Earwax {
-                       earwax_context: Unique::new(earwax_context),
+                       earwax_context: context,
                        info: Info {
                            bitrate: info.bitrate,
                            sample_rate: info.sample_rate,
