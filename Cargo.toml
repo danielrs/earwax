@@ -10,7 +10,6 @@ homepage = "https://github.com/danielrs/earwax"
 documentation = "https://docs.rs/earwax"
 repository = "https://github.com/danielrs/earwax"
 
-license = "MIT"
 license-file = "./LICENSE"
 
 [dependencies]

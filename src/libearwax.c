@@ -95,7 +95,7 @@ typedef struct {
  * 2. Interleaved to 2 channels (stereo).
  */
 typedef struct {
-    char* data; /**< Pointer to the decoded data. */
+    uint8_t* data; /**< Pointer to the decoded data. */
     size_t size; /**< Size in bytes of the decoded data. */
     int64_t time; /**< Time of chunks inside the stream in time_base units. */
 } EarwaxChunk;
@@ -202,7 +202,7 @@ int earwax_new(EarwaxContext** ctx_ptr, const char* url) {
     // Codec context.
     ctx->stream_index = -1;
     ctx->codec_ctx = avcodec_alloc_context3(NULL);
-    int i;
+    unsigned int i;
     for (i = 0; i < ctx->format_ctx->nb_streams; ++i) {
         AVCodecContext* codec_ctx = ctx->format_ctx->streams[i]->codec;
         if (codec_ctx->codec_type == AVMEDIA_TYPE_AUDIO) {
